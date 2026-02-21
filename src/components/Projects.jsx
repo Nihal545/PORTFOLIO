@@ -1,28 +1,33 @@
+import { useEffect, useState } from "react";
+
 function Projects() {
+  const [repos, setRepos] = useState([]);
+
+  useEffect(() => {
+    fetch("https://api.github.com/users/Nihal545/repos")
+      .then((res) => res.json())
+      .then((data) => {
+        const filtered = data.filter(
+          (repo) => !repo.fork && repo.name !== "PORTFOLIO"
+        );
+        setRepos(filtered);
+      });
+  }, []);
+
   return (
     <section id="projects">
-      <h2>Projects</h2>
+      <h2>My GitHub Projects</h2>
 
       <div className="projects-container">
-
-        <div className="project-card">
-          <h3>Calculator</h3>
-          <p>HTML, CSS & JavaScript calculator project.</p>
-          <a href="#">View Code</a>
-        </div>
-
-        <div className="project-card">
-          <h3>Form Validation</h3>
-          <p>Bootstrap & JavaScript form validation.</p>
-          <a href="#">View Code</a>
-        </div>
-
-        <div className="project-card">
-          <h3>To-Do List</h3>
-          <p>Task manager using HTML CSS JS.</p>
-          <a href="#">View Code</a>
-        </div>
-
+        {repos.map((repo) => (
+          <div key={repo.id} className="project-card">
+            <h3>{repo.name}</h3>
+            <p>{repo.description || "No description available."}</p>
+            <a href={repo.html_url} target="_blank" rel="noreferrer">
+              View Code
+            </a>
+          </div>
+        ))}
       </div>
     </section>
   );
