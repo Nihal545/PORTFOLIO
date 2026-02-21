@@ -4,15 +4,16 @@ function Projects() {
   const [repos, setRepos] = useState([]);
 
   useEffect(() => {
-    fetch("https://api.github.com/users/Nihal545/repos")
-      .then((res) => res.json())
-      .then((data) => {
-        const filtered = data.filter(
-          (repo) => !repo.fork && repo.name !== "PORTFOLIO"
-        );
-        setRepos(filtered);
-      });
-  }, []);
+  fetch("https://api.github.com/users/Nihal545/repos?per_page=100")
+    .then((res) => res.json())
+    .then((data) => {
+      const sorted = data.sort(
+        (a, b) => new Date(b.created_at) - new Date(a.created_at)
+      );
+      setRepos(sorted);
+    })
+    .catch((err) => console.log(err));
+}, []);
 
   return (
     <section id="projects">
