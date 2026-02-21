@@ -1,0 +1,295 @@
+/* ================= GLOBAL RESET ================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  transition: 0.3s ease;
+  overflow-x: hidden;
+}
+
+/* ================= DARK / LIGHT ================= */
+
+body.dark {
+  background: linear-gradient(to right, #0f172a, #1e293b);
+  color: #ffffff;
+}
+
+body.light {
+  background: #f8fafc;
+  color: #111827;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar {
+  width: 100%;
+  height: 70px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(12px);
+  background: rgba(15, 23, 42, 0.9);
+  z-index: 1000;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  height: 100%;
+  padding: 0 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #6366f1;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.toggle-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: #6366f1;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-icon {
+  display: none;
+  font-size: 1.6rem;
+  color: white;
+  cursor: pointer;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+  margin-top: 80px;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 80px 60px;
+  gap: 60px;
+}
+
+.hero-left span {
+  color: #6366f1;
+}
+
+.typing {
+  margin: 15px 0;
+}
+
+.resume-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 22px;
+  background: #6366f1;
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.resume-btn:hover {
+  transform: translateY(-5px);
+  background: #4f46e5;
+}
+
+.hero-right img {
+  width: 260px;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(0,0,0,.3);
+  animation: float 4s ease-in-out infinite;
+}
+
+/* 3D Floating Animation */
+@keyframes float {
+  0%,100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+/* ================= SECTIONS ================= */
+
+section {
+  padding: 80px 60px;
+  text-align: center;
+}
+
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+/* ================= SKILLS ================= */
+
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
+}
+
+.skill-card {
+  padding: 25px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.05);
+  backdrop-filter: blur(6px);
+  transition: 0.3s ease;
+  font-weight: 500;
+}
+
+.skill-card:hover {
+  transform: translateY(-10px);
+  background: rgba(99,102,241,.2);
+}
+
+/* ================= PROJECTS ================= */
+
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.project-card {
+  padding: 25px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.05);
+  backdrop-filter: blur(6px);
+  text-align: left;
+  transition: 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  background: rgba(99,102,241,.2);
+}
+
+.project-card h3 {
+  color: #6366f1;
+  margin-bottom: 10px;
+}
+
+.project-card p {
+  margin-bottom: 15px;
+}
+
+.project-card a {
+  text-decoration: none;
+  color: #6366f1;
+  font-weight: 500;
+}
+
+.project-card a:hover {
+  text-decoration: underline;
+}
+
+/* ================= CONTACT ================= */
+
+.contact-form {
+  max-width: 500px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+.contact-form button {
+  padding: 12px;
+  border: none;
+  background: #6366f1;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-form button:hover {
+  transform: scale(1.05);
+  background: #4f46e5;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: -100%;
+    flex-direction: column;
+    background: #0f172a;
+    width: 220px;
+    padding: 25px;
+    transition: 0.3s ease;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 60px 20px;
+  }
+
+  section {
+    padding: 60px 20px;
+  }
+
+}
